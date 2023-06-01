@@ -14,4 +14,9 @@ public class Service {
     public List<Bundle> getBundles() {
         return repository.findAll();
     }
+    
+    public Bundle uploadBundle(Bundle bundle) {
+        repository.save(bundle);
+        return bundle;
+    }
 }
