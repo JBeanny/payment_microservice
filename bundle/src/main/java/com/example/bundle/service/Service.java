@@ -5,6 +5,7 @@ import com.example.bundle.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -18,5 +19,9 @@ public class Service {
     public Bundle uploadBundle(Bundle bundle) {
         repository.save(bundle);
         return bundle;
+    }
+
+    public Optional<Bundle> getBundle(Long bundleId) {
+        return repository.findById(bundleId);
     }
 }
