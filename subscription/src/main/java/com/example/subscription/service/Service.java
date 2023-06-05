@@ -31,4 +31,8 @@ public class Service {
 
         return subscriptionToSave;
     }
+
+    public List<Subscription> getCustomerSubscription(String customerId) {
+        return repository.getSubscriptionByCustomerId(customerId);
+    }
 }

@@ -36,6 +36,26 @@ public class Controller {
         }
     }
 
+    @GetMapping("/{customer_id}")
+    public ResponseEntity<Object> getCustomerSubscription(@PathVariable String customer_id) {
+        Map<String,Object> response = new HashMap<>();
+
+        try{
+            List<Subscription> subscriptions = service.getCustomerSubscription(customer_id);
+            System.out.println(subscriptions.size());
+            response.put("status","success");
+            response.put("result",subscriptions.size());
+            response.put("subscription",subscriptions);
+
+            return ResponseEntity.status(201).body(response);
+        }catch(Exception e) {
+            response.put("status","fail");
+            response.put("message",e.getMessage());
+
+            return ResponseEntity.status(400).body(response);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Object> uploadSubscription(@RequestBody Subscription subscription){
         Map<String,Object> response = new HashMap<>();

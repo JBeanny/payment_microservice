@@ -24,9 +24,6 @@ public class Payment {
     @Column(name = "customer_id")
     private String customerId;
 
-    @Column(name = "subscription_id")
-    private Long subscriptionId;
-
     @Column(name = "total_price")
     private Long totalPrice;
 

@@ -36,6 +36,24 @@ public class Controller {
         }
     }
 
+    @GetMapping("monthly_payment/{customer_id}")
+    public ResponseEntity<Object> getMonthlyPaymentByCustomerId(@PathVariable String customer_id) {
+        Map<String,Object> response = new HashMap<>();
+
+        try{
+            Payment payment = service.getMonthlyPaymentByCustomerId(customer_id);
+            response.put("status","success");
+            response.put("payment",payment);
+
+            return ResponseEntity.status(201).body(response);
+        }catch(Exception e) {
+            response.put("status","fail");
+            response.put("message",e.getMessage());
+
+            return ResponseEntity.status(400).body(response);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Object> uploadPayment(@RequestBody Payment payment){
         Map<String,Object> response = new HashMap<>();
